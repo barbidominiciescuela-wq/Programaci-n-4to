@@ -135,28 +135,38 @@ sucursales = {"Oeste": ["Merlo", "Castelar", "Ramos Mejía"],
 # FUNCIÓN PARA BUSCAR USUARIO POR DNI
 def buscarUsuarioPorDni(nroBuscado):
   print("\nBuscando usuario...")
+  for usuario in usuarios:
+    if usuario["Dni"] == nroBuscado:
+      return usuario
+  return None
 
 # FUNCIÓN PARA CONSULTAR EL SALDO
 def consultarSaldo(usuario):
   print("\nConsultando Saldo...")
+  
 
 # FUNCIÓN PARA CONSULTAR FACTURAS
 def consultarFacturas(usuario):
   print("\nConsultando Facturas...")
-
+  for factura in usuario["FacturasAdeudadas"]:
+    print(factura)
+    
 # FUNCIÓN PARA PAGAR FACTURAS
 def pagarFacturas(usuario):
   print("\nPagando Facturas...")
+
 # LAS FACTURAS SOLO SE PAGAN SI TIENES SALDO SUFICIENTE
 # SI LAS FACTURAS SE PAGAN, SE BORRAN DEL DICCIONARIO
 
 # FUNCIÓN PARA CONSULTAR SUCURSALES
 def consultarSucursales():
   print("\nAccediendo a datos de sucursales...")
+  print(sucursales)
 
 # FUNCIÓN PARA SACAR TURNO
 def sacarTurno():
   print("\nObteniendo horarios disponibles...")
+  
 
 
 
@@ -166,10 +176,13 @@ def sacarTurno():
   print("\n**¡Hola! Soy Telmo, tu asistente virtual**")
 
 # SOLICITAR DNI CON input() Y ALMACENARLO EN UNA VARIABLE
+numeroDni = int(input("Ingrese su número de DNI: "))
 
 # BUSCAR USUARIO SEGÚN SU DNI Y ALMACENARLO EN UNA VARIABLE LLAMADA "usuarioActual"
+usuarioActual = buscarUsuarioPorDni(numeroDni)
 
 # SALUDAR AL "usuarioActual" SEGÚN SU NOMBRE
+print("\nHola", usuarioActual["Nombre"], "¡Bienvenido a nuestro sistema!")
 
 
 # BUCLE DEL CHATBOT - PERMITIR ELEGIR OPCIONES HASTA QUE DESEE TERMINAR
